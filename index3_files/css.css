@@ -1,0 +1,156 @@
+body {
+    margin-left: 20px;
+    margin-right: 20px;
+    background-image: url(https://raw.githubusercontent.com/badbatter23/imgwhatever2/refs/heads/main/bg-tree.png);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: -.5rem;
+    margin-left: -.5rem;
+    margin-right: -.5rem;
+}   
+
+.cuadro {
+    flex: 0 0 25%;
+    max-width: 25%;
+    padding: .5rem;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+}
+
+.caja {
+    width: 100%;
+    max-width: 280px;
+    height: 360px;
+    border: 0.5px solid;
+    background-color: transparent;
+    border-radius: 5px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.cuerpo {
+    font-size: 17px !important;
+    font-weight: 700;
+    width: 100%;
+    margin-bottom: 18px;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.contenido {
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: 1px solid;
+    position: relative;    
+    height: 220px;
+    overflow: hidden;
+}
+
+.contenido2, .contenido2 span, .contenido2 p {
+    margin-bottom: 20px !important;
+    font-weight: 400 !important;
+    display: flex;
+    justify-content: center;
+}
+
+/* Regalo & Cintas Blancas */
+.regalo {
+    position: relative;
+    padding: 1.25rem;
+    text-align: center;
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 100%;
+    height: 140px;
+    border: 1px solid black;
+    border-top: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.regalo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15px;
+    height: 100%;
+    background-color: white; 
+    z-index: 1;
+}
+
+.regalo::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-40%);
+    width: 100%;
+    height: 15px;
+    background-color: white;
+    z-index: 1;
+}
+
+.regalo .cuerpo, .regalo .contenido2 {
+    position: relative;
+    z-index: 2;
+    color: black !important;
+    text-shadow: none; 
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Fondos por orden */
+.grid .cuadro:nth-child(5n + 1) .regalo { 
+    background-color: #d32f2f; 
+}
+.grid .cuadro:nth-child(5n + 2) .regalo { 
+    background-color: #1976d2; 
+}
+.grid .cuadro:nth-child(5n + 3) .regalo { 
+    background-color: #388e3c; 
+}
+.grid .cuadro:nth-child(5n + 4) .regalo { 
+    background-color: #7b1fa2; 
+}
+.grid .cuadro:nth-child(5n + 5) .regalo { 
+    background-color: #fbc02d; 
+}
+
+/* Transición para Ocultar Texto */
+.regalo.oculto-contenido .cuerpo,
+.regalo.oculto-contenido .contenido2 {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Elemento del Moño (Oculto por defecto) */
+.regalo .mono {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 65px;
+    height: 65px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path fill="%23FFD700" d="M32 26c-4-8-14-10-18-5s-1 13 8 13h10V26zm0 0c4-8 14-10 18-5s1 13-8 13H32V26z"/><path fill="%23DAA520" d="M32 30c-2-4-8-5-10-2s-1 6 4 6h6V30zm0 0c2-4 8-5 10-2s1 6-4 6h-6V30z"/><circle cx="32" cy="30" r="5" fill="%23FF4500"/><path fill="%23FFD700" d="M28 34l-8 16h6l6-12zm8 0l8 16h-6l-6-12z"/></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 10;
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Mostrar el Moño únicamente al hacer clic en el Logo */
+.regalo.oculto-contenido .mono {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
